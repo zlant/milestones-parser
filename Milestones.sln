@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parser", "Parser\Parser.csproj", "{19D5E5DE-5FA0-47F2-8870-ECB047445457}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilParserApp", "MilParserApp\MilParserApp.csproj", "{90D2F80D-356D-4D94-9C54-3E5BA19FED04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19D5E5DE-5FA0-47F2-8870-ECB047445457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19D5E5DE-5FA0-47F2-8870-ECB047445457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19D5E5DE-5FA0-47F2-8870-ECB047445457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19D5E5DE-5FA0-47F2-8870-ECB047445457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D2F80D-356D-4D94-9C54-3E5BA19FED04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D2F80D-356D-4D94-9C54-3E5BA19FED04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D2F80D-356D-4D94-9C54-3E5BA19FED04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D2F80D-356D-4D94-9C54-3E5BA19FED04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E710B76-1F8F-43F2-ADAD-84F0BBA39919}
+	EndGlobalSection
+EndGlobal
