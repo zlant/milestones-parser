@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MilestonesParser.App": {
+      "commandName": "Project",
+      "commandLineArgs": "\"E:\\OSM\\Data\\local.osm.pbf\""
+    }
+  }
+}

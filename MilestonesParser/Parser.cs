@@ -1,5 +1,5 @@
-﻿using OsmSharp.Osm;
-using OsmSharp.Osm.PBF.Streams;
+﻿using OsmSharp;
+using OsmSharp.Streams;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -191,7 +191,7 @@ namespace ParserMilsetones
 
         private void ParseNode(Node element)
         {
-            if (!element.Tags.ContainsKeyValue("highway", "milestone"))
+            if (!element.Tags.Contains("highway", "milestone"))
                 return;
 
             string tagDistance;
@@ -302,7 +302,7 @@ namespace ParserMilsetones
             }
 
 
-            var intersect = Intersect(nids, element.Nodes);
+            var intersect = Intersect(nids, element.Nodes.ToList());
 
             if (intersect.Count == 0)
                 return;
@@ -365,17 +365,17 @@ namespace ParserMilsetones
                 Console.WriteLine("Rel");
             }
 
-            if (!(element.Tags.ContainsKeyValue("type", "route") &&
-                element.Tags.ContainsKeyValue("route", "road")))
+            if (!(element.Tags.Contains("type", "route") &&
+                element.Tags.Contains("route", "road")))
                 return;
 
-            if (element.Tags.ContainsKeyValue("network", "e-road") ||
-                element.Tags.ContainsKeyValue("network", "AsianHighway"))
+            if (element.Tags.Contains("network", "e-road") ||
+                element.Tags.Contains("network", "AsianHighway"))
                 return;
 
             var wayMems = element.Members
-                .Where(x => x.MemberType == OsmGeoType.Way)
-                .Select(x => (long)x.MemberId)
+                .Where(x => x.Type == OsmGeoType.Way)
+                .Select(x => (long)x.Id)
                 .ToList();
             //.Intersect( mems );
 
@@ -408,13 +408,16 @@ namespace ParserMilsetones
                 foreach (var mil in mils)
                 {
                     mil.RelRoutes.Add(route);
-                    if (mil.WayRoute.Ref == route.Ref)
-                        mil.WayRoute.Dublicate = true;
-                    else if (mil.WayRoute.Ref.Contains(";"))
+                    if (!string.IsNullOrEmpty(mil.WayRoute.Ref))
                     {
-                        foreach (var wayref in mil.WayRoute.Ref.Split(';'))
-                            if (wayref.Trim() == route.Ref)
-                                mil.WayRoute.Dublicate = true;
+                        if (mil.WayRoute.Ref == route.Ref)
+                            mil.WayRoute.Dublicate = true;
+                        else if (mil.WayRoute.Ref.Contains(";"))
+                        {
+                            foreach (var wayref in mil.WayRoute.Ref.Split(';'))
+                                if (wayref.Trim() == route.Ref)
+                                    mil.WayRoute.Dublicate = true;
+                        }
                     }
                 }
             }
